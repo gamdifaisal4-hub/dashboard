@@ -8,7 +8,13 @@ const path     = require('path');
 const bcrypt   = require('bcryptjs');
 const XLSX     = require('xlsx');
 const Database = require('better-sqlite3');
+const fs       = require('fs');
 const cfg      = require('./config');
+
+// ── إنشاء مجلد البيانات إذا لم يكن موجوداً ────────────────────────────────────
+if (!fs.existsSync('./data')) {
+    fs.mkdirSync('./data');
+}
 
 const app    = express();
 const server = http.createServer(app);
